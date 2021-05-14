@@ -92,7 +92,7 @@ def confirm_and_proceed(collected_details):
     display_info_dict(collected_details)
 
     confirm = input("\nProceed with above info (y/n Default y) : ")
-    confirm = confirm || 'y'
+    confirm = confirm | 'y'
     if confirm != 'y':
         print("Details not confirmed. Exiting process.")
         os.system("pause")
@@ -102,7 +102,7 @@ def confirm_and_proceed(collected_details):
 def save_user_info(filename, details):
     print("\n================================= Save Info =================================\n")
     save_info = input("Would you like to save this as a JSON file for easy use next time?: (y/n Default y): ")
-    save_info = save_info || 'y'
+    save_info = save_info | 'y'
     if save_info == 'y':
         with open(filename, 'w') as f:
             json.dump(details, f)
@@ -654,7 +654,7 @@ def generate_token_OTP(mobile, request_header):
                         print(f"Response: {token.text}")
 
                         retry = input(f"Retry with {mobile} ? (y/n Default y): ")
-                        retry = retry || 'y'
+                        retry = retry | 'y'
                         if retry == 'y':
                             pass
                         else:
@@ -665,7 +665,7 @@ def generate_token_OTP(mobile, request_header):
                 print(txnId.status_code, txnId.text)
 
                 retry = input(f"Retry with {mobile} ? (y/n Default y): ")
-                retry = retry || 'y'
+                retry = retry | 'y'
                 if retry == 'y':
                     pass
                 else:
