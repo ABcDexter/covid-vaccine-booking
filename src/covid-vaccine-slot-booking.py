@@ -37,7 +37,7 @@ def main():
             print(f"Info from perhaps a previous run already exists in {filename} in this directory.")
             print(f"IMPORTANT: If this is your first time running this version of the application, DO NOT USE THE FILE!")
             try_file = input("Would you like to see the details and confirm to proceed? (y/n Default y): ")
-            try_file = try_file if try_file else 'y'
+            try_file = try_file || 'y'
 
             if try_file == 'y':
                 collected_details = get_saved_user_info(filename)
@@ -45,7 +45,7 @@ def main():
                 display_info_dict(collected_details)
 
                 file_acceptable = input("\nProceed with above info? (y/n Default n): ")
-                file_acceptable = file_acceptable if file_acceptable else 'n'
+                file_acceptable = file_acceptable || 'n'
 
                 if file_acceptable != 'y':
                     collected_details = collect_user_details(request_header)

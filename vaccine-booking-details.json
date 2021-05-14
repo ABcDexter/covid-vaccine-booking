@@ -1,0 +1,1 @@
+{"beneficiary_dtls": [{"bref_id": "76741805187470", "name": "Rajni Lakshmi Joshi", "vaccine": "", "age": 24, "status": "Not Vaccinated"}], "location_dtls": [{"pincode": "263136", "alert_freq": 440}], "search_option": 1, "minimum_slots": 100, "refresh_freq": 5, "auto_book": "no", "start_date": 1, "vaccine_type": null, "fee_type": ["Free", "Paid"]}

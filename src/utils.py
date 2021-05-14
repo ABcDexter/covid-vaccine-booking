@@ -59,10 +59,6 @@ def viable_options(resp, minimum_slots, min_age_booking, fee_type):
                     }
                     options.append(out)
 
-                else:
-                    pass
-    else:
-        pass
 
     return options
 
@@ -96,7 +92,7 @@ def confirm_and_proceed(collected_details):
     display_info_dict(collected_details)
 
     confirm = input("\nProceed with above info (y/n Default y) : ")
-    confirm = confirm if confirm else 'y'
+    confirm = confirm || 'y'
     if confirm != 'y':
         print("Details not confirmed. Exiting process.")
         os.system("pause")
@@ -106,7 +102,7 @@ def confirm_and_proceed(collected_details):
 def save_user_info(filename, details):
     print("\n================================= Save Info =================================\n")
     save_info = input("Would you like to save this as a JSON file for easy use next time?: (y/n Default y): ")
-    save_info = save_info if save_info else 'y'
+    save_info = save_info || 'y'
     if save_info == 'y':
         with open(filename, 'w') as f:
             json.dump(details, f)
@@ -243,8 +239,6 @@ def check_calendar_by_district(request_header, vaccine_type, location_dtls, star
                     print(f"Centers available in {location['district_name']} from {start_date} as of {today.strftime('%Y-%m-%d %H:%M:%S')}: {len(resp['centers'])}")
                     options += viable_options(resp, minimum_slots, min_age_booking, fee_type)
 
-            else:
-                pass
 
         for location in location_dtls:
             if location['district_name'] in [option['district'] for option in options]:
@@ -287,8 +281,6 @@ def check_calendar_by_pincode(request_header, vaccine_type, location_dtls, start
                     print(f"Centers available in {location['pincode']} from {start_date} as of {today.strftime('%Y-%m-%d %H:%M:%S')}: {len(resp['centers'])}")
                     options += viable_options(resp, minimum_slots, min_age_booking, fee_type)
 
-            else:
-                pass
 
         for location in location_dtls:
             if int(location['pincode']) in [option['pincode'] for option in options]:
@@ -380,8 +372,6 @@ def check_and_book(request_header, beneficiary_dtls, location_dtls, search_optio
             start_date = (datetime.datetime.today() + datetime.timedelta(days=1)).strftime("%d-%m-%Y")
         elif isinstance(start_date, int) and start_date == 1:
             start_date = datetime.datetime.today().strftime("%d-%m-%Y")
-        else:
-            pass
 
         if search_option == 2:
             options = check_calendar_by_district(request_header, vaccine_type, location_dtls, start_date,
@@ -664,7 +654,7 @@ def generate_token_OTP(mobile, request_header):
                         print(f"Response: {token.text}")
 
                         retry = input(f"Retry with {mobile} ? (y/n Default y): ")
-                        retry = retry if retry else 'y'
+                        retry = retry || 'y'
                         if retry == 'y':
                             pass
                         else:
@@ -675,7 +665,7 @@ def generate_token_OTP(mobile, request_header):
                 print(txnId.status_code, txnId.text)
 
                 retry = input(f"Retry with {mobile} ? (y/n Default y): ")
-                retry = retry if retry else 'y'
+                retry = retry || 'y'
                 if retry == 'y':
                     pass
                 else:
